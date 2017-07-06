@@ -72,7 +72,10 @@ function getExpression(_, ctx) {
  */
 function getKey(_, ctx) {
   var k = 'k:' + _.$key;
-  return ctx.fn[k] || (ctx.fn[k] = key(_.$key));
+  if (!ctx.fn[k]) {
+    ctx.fn[k] = key(_.$key);
+  }
+  return ctx.fn[k];
 }
 
 /**
@@ -88,7 +91,10 @@ function getField(_, ctx) {
  */
 function getCompare(_, ctx) {
   var k = 'c:' + _.$compare + '_' + _.$order;
-  return ctx.fn[k] || (ctx.fn[k] = compare(_.$compare, _.$order));
+  if (!ctx.fn[k]) {
+    ctx.fn[k] = compare(_.$compare, _.$order);
+  }
+  return ctx.fn[k];
 }
 
 /**
