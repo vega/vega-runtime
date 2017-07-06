@@ -50,7 +50,8 @@ Context.prototype = ContextFork.prototype = {
     return this.nodes[id];
   },
   set: function(id, node) {
-    return this.nodes[id] = node;
+    this.nodes[id] = node;
+    return node;
   },
   add: function(spec, op) {
     var ctx = this,

@@ -4,7 +4,8 @@ var registry = {};
 
 function events(source, type, filter) {
   var handlers = registry[source] || (registry[source] = {});
-  return (handlers[type] = new vega.EventStream(filter));
+  handlers[type] = new vega.EventStream(filter);
+  return handlers[type];
 }
 
 function fire(source, type, event) {
